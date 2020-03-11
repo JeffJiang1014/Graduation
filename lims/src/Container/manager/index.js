@@ -7,7 +7,7 @@ class Index extends Component{
 
     render(){
         return(
-            <div>管理员{this.props.location.state.id}</div>
+            <div>管理员{this.props.location.state.id}hello</div>
         )
     };
 }
