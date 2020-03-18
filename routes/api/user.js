@@ -3,7 +3,7 @@ var router = express.Router();
 var db = require("../../DBconnection");
 const isEmpty = require('../../validation/isEmpty')
 
-router.post('/login', (req, res, next) => {
+router.post('/login', (req, res) => {
     const id = req.body.id;
     const password = req.body.password;
     //console.log(id,password);

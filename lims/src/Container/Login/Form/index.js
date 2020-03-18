@@ -38,22 +38,22 @@ class Form extends Component {
     };
     Axios.post("http://localhost:5000/api/user/login",newUser)
     .then(res => {
-      console.log(res.data.permission);
+      //console.log(res.data.permission);
       switch (res.data.permission) {
         case "1":
-          this.props.history.push({pathname:'/manager_index', state:{id:this.state.id}});
+          this.props.history.push('/manager_index',{id: this.state.id, permission: res.data.permission});
           break;
         case "2":
-          this.props.history.push('/headteacher_index',{id:this.state.id});
+          this.props.history.push('/headteacher_index',{id: this.state.id, permission: res.data.permission});
           break;
         case "3":
-          this.props.history.push('/teacher_index',{id:this.state.id});
+          this.props.history.push('/teacher_index',{id: this.state.id, permission: res.data.permission});
           break;
         case "4":
-          this.props.history.push('/monitor_index',{id:this.state.id});
+          this.props.history.push('/monitor_index',{id: this.state.id, permission: res.data.permission});
           break;
         case "5":
-          this.props.history.push('/student_index',{id:this.state.id});
+          this.props.history.push('/student_index',{id: this.state.id, permission: res.data.permission});
           break;
         default:
           break;

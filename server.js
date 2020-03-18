@@ -12,5 +12,7 @@ app.use((req, res, next) => {
   });
 
 const users = require('./routes/api/user');
+const stuInfo = require('./routes/api/stuInfo');
 app.use('/api/user', users);
+app.use('/api/stuInfo',stuInfo);
 app.listen(port, () => console.log(`Listening on port ${port}`));
