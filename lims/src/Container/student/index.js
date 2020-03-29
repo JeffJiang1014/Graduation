@@ -10,8 +10,7 @@ class Index extends Component{
     constructor(){
         super();
         this.state = {
-            id: '',
-            name: '',
+            info: {},
             permission: ''
         }
     }
@@ -20,17 +19,17 @@ class Index extends Component{
         Axios.post("http://localhost:5000/api/stuInfo/getStuInfo",{id: this.props.location.state.id})
         .then(res => {
             this.setState({
-                id: res.data[0].id,
-                name: res.data[0].name,
+                info: res.data[0],
                 permission: this.props.location.state.permission
             })
         })
         .catch(err => console.log(err.data))
     }
     render(){
+        //console.log(this.state)
         return(
             <div>
-                <Drawer id={this.state.id} name={this.state.name} permission={this.state.permission}/>
+                <Drawer info={this.state.info} permission={this.state.permission}/>
             </div>
         )
     };

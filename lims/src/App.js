@@ -5,8 +5,6 @@ import './App.css';
 import Manager_index from './Container/manager/index';
 import Student_index from './Container/student/index';
 import Teacher_index from './Container/teacher/index';
-import Monitor_index from './Container/monitor/index';
-import Headteacher_index from './Container/headteacher/index';
 
 function App() {
   return (
@@ -16,8 +14,6 @@ function App() {
         <Route exact path="/manager_index" component={Manager_index}/>
         <Route exact path="/teacher_index" component={Teacher_index}/>
         <Route exact path="/student_index" component={Student_index}/>
-        <Route exact path="/monitor_index" component={Monitor_index}/>
-        <Route exact path="/headteacher_index" component={Headteacher_index}/>
       </div>
     </Router>
   );

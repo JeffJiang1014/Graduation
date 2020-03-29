@@ -12,6 +12,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap';
 import 'jquery'
 import { withRouter } from 'react-router-dom'
+import ErrorIcon from '@material-ui/icons/ErrorOutline'
 
 class Form extends Component {
   constructor() {
@@ -50,7 +51,7 @@ class Form extends Component {
           this.props.history.push('/teacher_index',{id: this.state.id, permission: res.data.permission});
           break;
         case "4":
-          this.props.history.push('/monitor_index',{id: this.state.id, permission: res.data.permission});
+          this.props.history.push('/student_index',{id: this.state.id, permission: res.data.permission});
           break;
         case "5":
           this.props.history.push('/student_index',{id: this.state.id, permission: res.data.permission});
@@ -97,7 +98,7 @@ class Form extends Component {
                 onChange={this.onChange}
               />
               {
-                errors.id && (<div className="invlid-feedback error">{errors.id}</div>)
+                errors.id && (<div className="invlid-feedback error"><ErrorIcon fontSize="small"/>{errors.id}</div>)
               }
               <TextField
                 variant="outlined"
@@ -113,7 +114,7 @@ class Form extends Component {
                 onChange={this.onChange}
               />
                {
-                errors.password && (<div className="invlid-feedback error">{errors.password}</div>)
+                errors.password && (<div className="invlid-feedback error"><ErrorIcon fontSize="small"/>{errors.password}</div>)
               }
               <Grid container>
                   <Grid item sm={6} md={8}></Grid>

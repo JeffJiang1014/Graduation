@@ -5,9 +5,8 @@ import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
-import InboxIcon from '@material-ui/icons/MoveToInbox';
-import DraftsIcon from '@material-ui/icons/Drafts';
-import SendIcon from '@material-ui/icons/Send';
+import EditIcon from '@material-ui/icons/Edit'
+import LogoutIcon from '@material-ui/icons/ExitToApp'
 import AccountCircle from '@material-ui/icons/AccountCircle';
 import { makeStyles } from '@material-ui/core/styles';
 
@@ -29,8 +28,11 @@ const StyledMenu = (props => (
 
 const useStyles = makeStyles(theme => ({
     button: {
-      margin: theme.spacing(1),
+      position: 'absolute',
+      right: theme.spacing(20),
+      top: theme.spacing(1.5)
     },
+    
   }));
 
 const StyledMenuItem = withStyles(theme => ({
@@ -65,6 +67,7 @@ export default function CustomizedMenus(props) {
         className={classes.button}
         startIcon={<AccountCircle/>}
         onClick={handleClick}
+        children=''
       >
         {props.name}
       </Button>
@@ -77,21 +80,15 @@ export default function CustomizedMenus(props) {
       >
         <StyledMenuItem>
           <ListItemIcon>
-            <SendIcon fontSize="small" />
+            <EditIcon fontSize="small" />
           </ListItemIcon>
-          <ListItemText primary="Sent mail" />
+          <ListItemText primary="修改密码" />
         </StyledMenuItem>
         <StyledMenuItem>
           <ListItemIcon>
-            <DraftsIcon fontSize="small" />
+            <LogoutIcon fontSize="small" />
           </ListItemIcon>
-          <ListItemText primary="Drafts" />
-        </StyledMenuItem>
-        <StyledMenuItem>
-          <ListItemIcon>
-            <InboxIcon fontSize="small" />
-          </ListItemIcon>
-          <ListItemText primary="Inbox" />
+          <ListItemText primary="退出登录" />
         </StyledMenuItem>
       </StyledMenu>
     </div>
