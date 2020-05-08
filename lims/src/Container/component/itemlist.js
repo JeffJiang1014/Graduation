@@ -16,33 +16,37 @@ class ItemList extends Component{
     constructor(props){
         super(props);
         this.state = {
-            permission: this.props.permission,
+            permission: window.sessionStorage.getItem('permission'),
         }
-        //console.log(this.state.permission);
     }
 
     render(){
         const au = this.state.permission;
-        var path = {
+        var pathforstudent = {
             pathname:'/student/info',
             state:this.props.info,
         }
+        var pathforteacher = {
+            pathname:'/teacher/info',
+            state:this.props.info,
+        }
+        
         //console.log(this.props.info)
         // console.log(au)
-        // console.log(this.state.permission);
+        //console.log(window.sessionStorage.getItem('permission'));
         //console.log(props.permission);
         return(
             <div>
-            { (au === '5' || '4') && (
+            { (au === '5' || au === '4') && (
                 <div>
                     <List>
-                        <ListItem button key="duty" component={Link} to='/student/duty'>
+                        <ListItem button key="duty" component={Link} to='/duty'>
                             <ListItemIcon><DutyIcon/></ListItemIcon>
                             <ListItemText primary="值日安排" />
                         </ListItem>
-                        <ListItem button key="seat">
+                        <ListItem button key="seat"  component={Link} to='/seat'>
                             <ListItemIcon><SeatIcon/></ListItemIcon>
-                            <ListItemText primary="我的座位" />
+                            <ListItemText primary="我的座位"/>
                         </ListItem>
                         <ListItem button key="inform">
                             <ListItemIcon><MailIcon/></ListItemIcon>
@@ -51,7 +55,7 @@ class ItemList extends Component{
                     </List>
                     <Divider />
                     <List>
-                        <ListItem button key="indiInfo" component={Link} to={path}>
+                        <ListItem button key="indiInfo" component={Link} to={pathforstudent}>
                             <ListItemIcon><AccountIcon/></ListItemIcon>
                             <ListItemText primary="个人信息" />
                         </ListItem>
@@ -59,7 +63,40 @@ class ItemList extends Component{
                             <ListItemIcon><ReasearchIcon/></ListItemIcon>
                             <ListItemText primary="我的科研" />
                         </ListItem>
-                        <ListItem button key="devMan">
+                        <ListItem button key="devMan" component={Link} to='/myDevice'>
+                            <ListItemIcon><DeviceIcon/></ListItemIcon>
+                            <ListItemText primary="我的设备" />
+                        </ListItem>
+                    </List>
+                </div>
+            )}
+            { (au === '2' || au === '3') && (
+                <div>
+                    <List>
+                        <ListItem button key="duty" component={Link} to='/duty'>
+                            <ListItemIcon><DutyIcon/></ListItemIcon>
+                            <ListItemText primary="值日安排" />
+                        </ListItem>
+                        <ListItem button key="seat"  component={Link} to='/seat'>
+                            <ListItemIcon><SeatIcon/></ListItemIcon>
+                            <ListItemText primary="座位管理"/>
+                        </ListItem>
+                        <ListItem button key="inform">
+                            <ListItemIcon><MailIcon/></ListItemIcon>
+                            <ListItemText primary="通知" />
+                        </ListItem>
+                    </List>
+                    <Divider />
+                    <List>
+                        <ListItem button key="indiInfo" component={Link} to={pathforteacher}>
+                            <ListItemIcon><AccountIcon/></ListItemIcon>
+                            <ListItemText primary="个人信息" />
+                        </ListItem>
+                        <ListItem button key="sciInfo">
+                            <ListItemIcon><ReasearchIcon/></ListItemIcon>
+                            <ListItemText primary="我的科研" />
+                        </ListItem>
+                        <ListItem button key="devMan" component={Link} to='/manageDevice'>
                             <ListItemIcon><DeviceIcon/></ListItemIcon>
                             <ListItemText primary="设备管理" />
                         </ListItem>

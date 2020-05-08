@@ -4,28 +4,21 @@ var db = require("../../DBconnection");
 
 router.post('/getDuty', (req, res) => {
     const sql = "SELECT * FROM duty";
-    //console.log(sql);
     db.query(sql,function(results){
-        //console.log(results);
         res.json(results); 
     })  
 });
 
 router.post('/getAllNames', (req, res) => {
-    // const names = req.body.
-    const sql = "SELECT name FROM stuinfo";
-    //console.log(sql);
+    const sql = "SELECT name FROM student_info";
     db.query(sql,function(results){
-        //console.log(results);
         res.json(results); 
     })  
 });
 
 router.delete('/delete',(req, res) => {
     const sql = "DELETE FROM duty LIMIT 6";
-    //console.log(1)
     db.query(sql,function(results){
-        //console.log(results);
         res.send("success"); 
     })
 })

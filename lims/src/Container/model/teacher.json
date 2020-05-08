@@ -1,0 +1,16 @@
+{
+    "id": "工号",
+    "name": "姓名",
+    "sex": "性别",
+    "entrance_time": "加入研究所的日期",
+    "birthday": "出生年月",
+    "graduate_time": "毕业时间",
+    "graduate_school": "毕业院校",
+    "orientation": "研究方向",
+    "identification": "身份证",
+    "college": "学院",
+    "graduated": "学历",
+    "phone": "联系电话",
+    "intro": "个人简介",
+    "research": "研究项目"
+}

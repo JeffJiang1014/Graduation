@@ -11,5 +11,6 @@
     "major": "专业",
     "class": "班级",
     "address": "住址",
-    "graduated": "学历"
+    "graduated": "学历",
+    "phone": "联系电话"
 }

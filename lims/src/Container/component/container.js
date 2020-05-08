@@ -13,10 +13,13 @@ import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import UserIcon from './userIcon';
 import ItemList from './itemlist';
-import InfoShow from './infoShow';
+import studentInfo from './getInfo/studentInfo';
+import teacherInfo from './getInfo/teacherInfo';
 import { BrowserRouter as Router, Route} from 'react-router-dom'
 import Duty from './duty'
 import Time from './time'
+import Seat from './seat'
+import Device from './device/device'
 
 const drawerWidth = 240;
 
@@ -82,6 +85,7 @@ const useStyles = makeStyles(theme => ({
 }));
 
 export default function MiniDrawer(props) {
+    //console.log(window.sessionStorage.getItem('permission'));
     //console.log(props)
     //const items = [];
     // switch(props.permission){
@@ -131,7 +135,7 @@ export default function MiniDrawer(props) {
             <Typography variant="h5" noWrap>
                 研究所日常管理系统
             </Typography>
-            <UserIcon name={props.info.name}/>
+            <UserIcon/>
             </Toolbar>
         </AppBar>
         <Drawer
@@ -153,15 +157,16 @@ export default function MiniDrawer(props) {
             </IconButton>
             </div>
             <Divider />
-            {props.permission && <ItemList permission={props.permission} info={props.info}/>}
+            <ItemList info={props.info}/>
         </Drawer>
         <main className={classes.content}>
             <div className={classes.toolbar} />
-            {/* <Route exact path="/student_index" component={Time}></Route> */}
-            <Route exact path="/student_index" component={Duty}></Route>
-            <Route exact path="/student/info" component={InfoShow}></Route>
-            {/* <Route exact path="/student/duty" component={Duty}></Route> */}
-            {/* <InfoShow info={props.info}/> */}
+            <Route exact path="/user_index" component={Device}></Route>
+            {/* <Route exact path="/user_index" component={Time}></Route>
+            <Route exact path="/seat" component={Seat}></Route>
+            <Route exact path="/student/info" component={studentInfo}></Route>
+            <Route exact path="/teacher/info" component={teacherInfo}></Route>
+            <Route exact path="/duty" component={Duty}></Route> */}
         </main>
         </div>
         </Router>

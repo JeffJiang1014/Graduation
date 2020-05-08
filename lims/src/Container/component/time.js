@@ -34,9 +34,9 @@ class Time extends Component{
     UNSAFE_componentWillMount(){
         this.getDate();
         this.getTime();
-        this.setState = (state,callback)=>{
-            return;
-          };
+        // this.setState = (state,callback)=>{
+        //     return;
+        //   };
     }
     render(){
         return(

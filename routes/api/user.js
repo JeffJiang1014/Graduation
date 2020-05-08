@@ -9,7 +9,7 @@ router.post('/login', (req, res) => {
     //console.log(id,password);
     const sql = "SELECT * FROM login WHERE id=" + "'" + id + "'";
     //console.log(sql);
-    db.query(sql,function(results,fields){
+    db.query(sql,function(results){
         //console.log(results);
         if(isEmpty(results)){
             //console.log("用户名不存在");

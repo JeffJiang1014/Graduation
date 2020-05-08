@@ -37,7 +37,7 @@ const useStyles = makeStyles(theme => ({
 
 const StyledMenuItem = withStyles(theme => ({
   root: {
-    '&:focus': {
+    '&:hover': {
       backgroundColor: theme.palette.primary.main,
       '& .MuiListItemIcon-root, & .MuiListItemText-primary': {
         color: theme.palette.common.white,
@@ -67,9 +67,8 @@ export default function CustomizedMenus(props) {
         className={classes.button}
         startIcon={<AccountCircle/>}
         onClick={handleClick}
-        children=''
       >
-        {props.name}
+        {window.sessionStorage.getItem('id')}
       </Button>
       <StyledMenu
         id="customized-menu"

@@ -1,5 +1,5 @@
-import React from 'react';
-import { withStyles, makeStyles } from '@material-ui/core/styles';
+import React, { Component } from 'react';
+import { withStyles} from '@material-ui/core/styles';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
@@ -8,13 +8,14 @@ import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 import moment from 'moment'
 import TableHead from '@material-ui/core/TableHead';
-import names from '../model/student.json'
+import names from '../../model/student.json'
+import Axios from 'axios';
 
-const useStyles = makeStyles({
+const useStyles = {
   table: {
     minWidth: 650,
   },
-});
+};
 const StyledTableCell = withStyles(theme => ({
     head: {
       backgroundColor: theme.palette.common.black,
@@ -37,17 +38,34 @@ function createData(name, value) {
   return { name, value };
 }
 
-export default function SimpleTable(props) {
-  const rows = [];
-  const classes = useStyles();
-  const data = props.location.state;
-  for(var i in data){
-    rows.push(createData(i,data[i]))       
+class Info extends Component {
+  constructor(props){
+    super(props);
+    this.state = {
+      info: {}
+    }
+  }
+  UNSAFE_componentWillMount(){
+    Axios.post("http://localhost:5000/api/getInfo/getStuInfo",{id: sessionStorage.getItem('id')})
+    .then(res => {
+      this.setState({
+          info: res.data[0],
+      })
+      //console.log(this.state.info)
+     })
+    .catch(err => console.log(err.data))
 }
 //console.log(rows)
-console.log(names['id']);
+//console.log(names['id']);
 
-  return (
+  render (){
+    const { classes } = this.props;
+    var rows = []
+    //console.log(this.state.info)
+    for(var i in this.state.info){
+      rows.push(createData(i,this.state.info[i]));
+    }
+    return(
     <TableContainer component={Paper}>
       <Table className={classes.table}>
       <TableHead>
@@ -69,5 +87,9 @@ console.log(names['id']);
         </TableBody>
       </Table>
     </TableContainer>
-  );
+    );
+  }
 }
+
+
+export default withStyles(useStyles)(Info);

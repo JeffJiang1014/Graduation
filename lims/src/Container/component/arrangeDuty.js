@@ -30,13 +30,22 @@ class SimpleTooltips extends Component {
         this.state = {
             names: this.props.names,
             week: this.props.week,
-            allNames: this.props.allNames,
+            allNames: [],
             flag: false,
         }
         this.onChange = this.onChange.bind(this);
         this.onClick = this.onClick.bind(this);
-        //console.log(this.state);
+       // console.log(this.state);
     }
+
+    UNSAFE_componentWillMount(){
+        Axios.post("http://localhost:5000/api/duty/getAllNames")
+        .then(res => {
+          for(var i in res.data)
+            this.state.allNames.push(res.data[i].name) 
+        })
+        .catch(err => console.log(err.data));
+      }
 
     onClick(){
         this.setState({flag: true});
@@ -70,11 +79,11 @@ class SimpleTooltips extends Component {
             $('#editModal').modal('hide');
             this.setState({flag: false});
             this.props.update(this.state.names);
-        },2500)
+        },1500)
     }
   //console.log(names)
   render(){
-      //console.log(this.state);
+      //console.log(this.state.allNames);
     const { classes } = this.props;
     return (
         <div>
@@ -94,10 +103,10 @@ class SimpleTooltips extends Component {
                 </div>
                 <div className="modal-body">
                     <form>
-                    {console.log(this.state.names)}
+                    {/* {console.log(this.state.names)} */}
                     {
                         this.state.names.map((name,index) => {
-                            console.log(name)
+                            //console.log(name)
                             return(
                             <div className="input-group mb-3" key={index}>
                                 <div className="input-group-prepend">
@@ -106,6 +115,7 @@ class SimpleTooltips extends Component {
                                 <select className="custom-select" id="inputGroupSelect01" value={name} onChange={(e) => this.onChange(e,index)}>
                                     {
                                         this.state.allNames.map((item,i) => {
+                                            //console.log(item)
                                             return(
                                                 <option value={item} key={i}>{item}</option>
                                             )

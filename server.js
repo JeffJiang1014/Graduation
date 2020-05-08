@@ -12,9 +12,13 @@ app.use((req, res, next) => {
   });
 
 const users = require('./routes/api/user');
-const stuInfo = require('./routes/api/stuInfo');
+const getInfo = require('./routes/api/getInfo');
 const duty = require('./routes/api/duty');
+const seat = require('./routes/api/seat');
+const equipment = require('./routes/api/equipment')
 app.use('/api/user', users);
-app.use('/api/stuInfo',stuInfo);
+app.use('/api/getInfo',getInfo);
 app.use('/api/duty',duty);
+app.use('/api/seat',seat);
+app.use('/api/equipment',equipment);
 app.listen(port, () => console.log(`Listening on port ${port}`));

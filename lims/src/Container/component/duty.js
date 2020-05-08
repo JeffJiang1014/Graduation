@@ -51,7 +51,6 @@ class Duty extends Component {
       names: [],
       week: ['星期一','星期二','星期三','星期四','星期五','休息日'],
       weekInEnglish: ['Monday','Tuesday','Wednesday','Thursday','Friday','restDay'],
-      allNames: [],
       flag: true,
     }
   }
@@ -79,18 +78,6 @@ class Duty extends Component {
   //   // .then(res => { console.log(res.data) })
   //   // .catch(err => console.log(err.data))
   // }
-
-  edit(){
-    if(this.state.flag){
-      Axios.post("http://localhost:5000/api/duty/getAllNames")
-        .then(res => {
-          for(var i in res.data)
-            this.state.allNames.push(res.data[i].name) 
-        })
-        .catch(err => console.log(err.data));
-        this.setState({flag: false});
-    }
-  }
   
   setNames(data){
     //console.log(this);
@@ -103,7 +90,7 @@ class Duty extends Component {
     // console.log(this.props.history.location.state.permission)
     //console.log(this.state.names)
     const { classes } = this.props;
-    const permission = this.props.history.location.state.permission;
+    const permission = window.sessionStorage.getItem('permission');
     let today = moment().format('dddd');
     //console.log(today);
     //console.log(this.state.weekInEnglish.includes(today) );
@@ -166,7 +153,12 @@ class Duty extends Component {
           }) 
         }
         </Grid>
-        { permission !=='5' && (<ArrangeDuty names={this.state.names} week={this.state.week} onClick={this.edit()} allNames={this.state.allNames} update={this.setNames.bind(this)}/>)}
+        { permission !=='5' && (<ArrangeDuty 
+        names={this.state.names} 
+        week={this.state.week} 
+        update={this.setNames.bind(this)}
+        />)
+        }
       </div>
     )
   }
