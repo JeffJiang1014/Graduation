@@ -30,4 +30,15 @@ router.post('/login', (req, res) => {
         
     })  
 });
+
+router.post('/edit', (req, res) => {
+    const id = req.body.id;
+    const password = req.body.password;
+    //console.log(id,password);
+    const sql = "UPDATE login SET pwd='"+password+"' WHERE id=" + "'" + id + "'";
+    console.log(sql);
+    db.query(sql,function(results){
+        res.json(results)        
+    })  
+});
 module.exports = router;

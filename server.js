@@ -11,14 +11,14 @@ app.use((req, res, next) => {
     next();
   });
 
-const users = require('./routes/api/user');
+const user = require('./routes/api/user');
 const getInfo = require('./routes/api/getInfo');
 const duty = require('./routes/api/duty');
 const seat = require('./routes/api/seat');
 const equipment = require('./routes/api/equipment');
 const research = require('./routes/api/research');
 const application = require('./routes/api/application');
-app.use('/api/user', users);
+app.use('/api/user', user);
 app.use('/api/getInfo',getInfo);
 app.use('/api/duty',duty);
 app.use('/api/seat',seat);

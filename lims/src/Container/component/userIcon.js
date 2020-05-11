@@ -58,6 +58,15 @@ export default function CustomizedMenus(props) {
     setAnchorEl(null);
   };
 
+  const logout = ()=>{
+    sessionStorage.clear();
+    window.location.href = "/";
+  }
+
+  const edit = () => {
+    window.location.href = "/edit";
+  }
+
   return (
     <div>
       <Button
@@ -77,13 +86,13 @@ export default function CustomizedMenus(props) {
         open={Boolean(anchorEl)}
         onClose={handleClose}
       >
-        <StyledMenuItem>
+        <StyledMenuItem onClick={edit}>
           <ListItemIcon>
             <EditIcon fontSize="small" />
           </ListItemIcon>
           <ListItemText primary="修改密码" />
         </StyledMenuItem>
-        <StyledMenuItem>
+        <StyledMenuItem onClick={logout}>
           <ListItemIcon>
             <LogoutIcon fontSize="small" />
           </ListItemIcon>

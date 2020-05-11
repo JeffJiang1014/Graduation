@@ -162,14 +162,14 @@ export default function MiniDrawer(props) {
         </Drawer>
         <main className={classes.content}>
             <div className={classes.toolbar} />
-            <Route exact path="/user_index" component={MyStudent}></Route>
-            {/* <Route exact path="/mystudent" component={MyStudent}></Route>
+            {/* <Route exact path="/user_index" component={MyStudent}></Route> */}
+            <Route exact path="/mystudent" component={MyStudent}></Route>
             <Route exact path="/device" component={Device}></Route>
             <Route exact path="/user_index" component={Time}></Route>
             <Route exact path="/seat" component={Seat}></Route>
             <Route exact path="/student/info" component={studentInfo}></Route>
             <Route exact path="/teacher/info" component={teacherInfo}></Route>
-            <Route exact path="/duty" component={Duty}></Route> */}
+            <Route exact path="/duty" component={Duty}></Route>
         </main>
         </div>
         </Router>

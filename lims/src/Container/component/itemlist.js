@@ -56,10 +56,6 @@ class ItemList extends Component{
                             <ListItemIcon><AccountIcon/></ListItemIcon>
                             <ListItemText primary="个人信息" />
                         </ListItem>
-                        <ListItem button key="sciInfo">
-                            <ListItemIcon><ReasearchIcon/></ListItemIcon>
-                            <ListItemText primary="我的科研" />
-                        </ListItem>
                         <ListItem button key="devMan" component={Link} to='/device'>
                             <ListItemIcon><DeviceIcon/></ListItemIcon>
                             <ListItemText primary="我的设备" />
@@ -88,10 +84,6 @@ class ItemList extends Component{
                         <ListItem button key="indiInfo" component={Link} to={pathforteacher}>
                             <ListItemIcon><AccountIcon/></ListItemIcon>
                             <ListItemText primary="个人信息" />
-                        </ListItem>
-                        <ListItem button key="sciInfo">
-                            <ListItemIcon><ReasearchIcon/></ListItemIcon>
-                            <ListItemText primary="我的科研" />
                         </ListItem>
                         <ListItem button key="devMan" component={Link} to='/device'>
                             <ListItemIcon><DeviceIcon/></ListItemIcon>

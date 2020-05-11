@@ -64,8 +64,8 @@ class Form extends Component {
       <div>
         <Grid container style={{"marginTop": "150px"}}>
           <Grid item xs={4}></Grid>
-          <Grid item xs={4} style={{"backgroundColor": "rgba(255,255,255,0.5)", "height":"400px", "padding": "40px"}}>
-          <div className={classes.login} style={{"textAlign": "center","fontSize":"30px", "color": "darkblack","margin": "10px 0px"}}>登&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;录</div>
+          <Grid item xs={4} style={{"backgroundColor": "rgba(255,255,255,0.5)", "height":"430px", "padding": "40px"}}>
+          <div className={classes.login} style={{"textAlign": "center","fontSize":"40px","fontWeight":"bold", "fontFamily": "楷体","color": "darkblack","margin": "10px 0px 30px 0px"}}>研究所日常管理系统</div>
             <form onSubmit={this.onSubmit} method="post">
               <TextField
                 variant="outlined"
