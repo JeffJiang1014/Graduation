@@ -2,13 +2,11 @@ import React, { Component } from 'react';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import ListItem from '@material-ui/core/ListItem';
-import MailIcon from '@material-ui/icons/Mail';
 import List from '@material-ui/core/List';
 import Divider from '@material-ui/core/Divider';
 import DeviceIcon from '@material-ui/icons/Devices'
 import AccountIcon from '@material-ui/icons/AccountBox'
 import DutyIcon from '@material-ui/icons/CalendarToday'
-import ReasearchIcon from '@material-ui/icons/MenuBook'
 import SeatIcon from '@material-ui/icons/EventSeat'
 import {Link} from 'react-router-dom'
 import PeopleIcon from '@material-ui/icons/People'

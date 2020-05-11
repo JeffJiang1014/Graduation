@@ -178,7 +178,7 @@ render(){
     <div className={classes.sample}>
      <Button
         startIcon={<SeatIcon></SeatIcon>}
-        className={classes.empty}
+        style={{"color": "lightgrey"}}
       >
         空闲
       </Button>
