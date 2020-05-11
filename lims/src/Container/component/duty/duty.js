@@ -90,7 +90,7 @@ class Duty extends Component {
     // console.log(this.props.history.location.state.permission)
     //console.log(this.state.names)
     const { classes } = this.props;
-    const permission = window.sessionStorage.getItem('permission');
+    const permission = sessionStorage.getItem('permission');
     let today = moment().format('dddd');
     //console.log(today);
     //console.log(this.state.weekInEnglish.includes(today) );
@@ -153,6 +153,7 @@ class Duty extends Component {
           }) 
         }
         </Grid>
+
         { permission !=='5' && (<ArrangeDuty 
         names={this.state.names} 
         week={this.state.week} 

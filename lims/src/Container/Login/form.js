@@ -1,18 +1,21 @@
 import React , { Component } from 'react';
+import { withStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import Checkbox from '@material-ui/core/Checkbox';
-import Link from '@material-ui/core/Link';
-import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
-import './index.css';
-import Axios from 'axios';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import 'bootstrap/dist/js/bootstrap';
+import Axios from 'axios';  
 import 'jquery'
 import { withRouter } from 'react-router-dom'
 import ErrorIcon from '@material-ui/icons/ErrorOutline'
+import AccountCircle from '@material-ui/icons/AccountCircle';
+import Lock from '@material-ui/icons/Lock'
+import InputAdornment from '@material-ui/core/InputAdornment';
+
+const style = ({
+    login: {
+      width: '100%',
+    }
+})
 
 class Form extends Component {
   constructor() {
@@ -28,7 +31,7 @@ class Form extends Component {
 
   onChange(e) {
     //console.log({ [e.target.name]: e.target.value });
-    this.setState({ [e.target.name]: e.target.value });
+    this.setState({ [e.target.name]: e.target.value , errors: {}});
   }
 
   onSubmit(e) {
@@ -54,28 +57,16 @@ class Form extends Component {
     .catch(err => this.setState({errors: err.response.data}))
   }
   render(){
-    const { errors } = this.state;
-    //console.log(errors);
-    // if(!isEmpty(errors)){
-    //   if("id" in errors){
-    //     $(".modal-body").html(errors.id);
-    //     $("#modalCenter").modal("show");
-    //     this.setState({errors: {}});
-    //   }
-    //   if("password" in errors){
-    //     $(".modal-body").html(errors.password);
-    //     $("#modalCenter").modal("show");
-    //     this.setState({errors: {}});
-    //   }
-    // }
+    const errors = this.state.errors;
+    //console.log(errors)
+    const classes = this.props;
     return (
-      <div className="ro">
-        <h1 className="title">
-          研究所日常管理系统
-        </h1>
-        <Grid component={Paper} elevation={6} className="main">
-          <div className="paper">
-            <form className="form" onSubmit={this.onSubmit} method="post">
+      <div>
+        <Grid container style={{"marginTop": "150px"}}>
+          <Grid item xs={4}></Grid>
+          <Grid item xs={4} style={{"backgroundColor": "rgba(255,255,255,0.5)", "height":"400px", "padding": "40px"}}>
+          <div className={classes.login} style={{"textAlign": "center","fontSize":"30px", "color": "darkblack","margin": "10px 0px"}}>登&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;录</div>
+            <form onSubmit={this.onSubmit} method="post">
               <TextField
                 variant="outlined"
                 margin="normal"
@@ -86,10 +77,11 @@ class Form extends Component {
                 name="id"
                 autoFocus
                 value={this.state.id}
-                onChange={this.onChange}
+                onChange={(e) => this.onChange(e)}
+                InputProps={{endAdornment: <InputAdornment position="end"><AccountCircle/></InputAdornment>,}}
               />
               {
-                errors.id && (<div className="invlid-feedback error"><ErrorIcon fontSize="small"/>{errors.id}</div>)
+                errors.id && (<div className="invlid-feedback" style={{"textAlign": "left", "color": "red"}}><ErrorIcon fontSize="small"/>{errors.id}</div>)
               }
               <TextField
                 variant="outlined"
@@ -102,34 +94,23 @@ class Form extends Component {
                 id="password"
                 autoComplete="current-password"
                 value={this.state.password}
-                onChange={this.onChange}
+                onChange={(e) => this.onChange(e)}
+                InputProps={{endAdornment: <InputAdornment position="end"><Lock/></InputAdornment>,}}
               />
                {
-                errors.password && (<div className="invlid-feedback error"><ErrorIcon fontSize="small"/>{errors.password}</div>)
+                errors.password && (<div className="invlid-feedback" style={{"text-align": "left", "color": "red"}}><ErrorIcon fontSize="small"/>{errors.password}</div>)
               }
-              <Grid container>
-                  <Grid item sm={6} md={8}></Grid>
-                  <Grid item sm={4} md={4}>
-                      <FormControlLabel
-                      control={<Checkbox value="remember" color="primary" />}
-                      label="记住我"
-                      />
-                      <Link href="#" variant="body2">
-                          忘记密码
-                      </Link>
-                  </Grid>
-              </Grid>
               <Button
                 type="submit"
                 fullWidth
                 variant="contained"
                 color="primary"
-                className="submit"
+                style={{"marginTop": "30px"}}
               >
                 登&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;录
               </Button>
             </form>
-          </div>
+          </Grid>
         </Grid>
       </div>
     );
@@ -137,4 +118,4 @@ class Form extends Component {
   
 }
 
-export default withRouter(Form);
+export default withRouter(withStyles(style)(Form));

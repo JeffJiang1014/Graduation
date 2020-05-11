@@ -16,10 +16,11 @@ import ItemList from './itemlist';
 import studentInfo from './getInfo/studentInfo';
 import teacherInfo from './getInfo/teacherInfo';
 import { BrowserRouter as Router, Route} from 'react-router-dom'
-import Duty from './duty'
+import Duty from './duty/duty'
 import Time from './time'
 import Seat from './seat'
 import Device from './device/device'
+import MyStudent from './mystudent/student'
 
 const drawerWidth = 240;
 
@@ -161,8 +162,10 @@ export default function MiniDrawer(props) {
         </Drawer>
         <main className={classes.content}>
             <div className={classes.toolbar} />
-            <Route exact path="/user_index" component={Device}></Route>
-            {/* <Route exact path="/user_index" component={Time}></Route>
+            <Route exact path="/user_index" component={MyStudent}></Route>
+            {/* <Route exact path="/mystudent" component={MyStudent}></Route>
+            <Route exact path="/device" component={Device}></Route>
+            <Route exact path="/user_index" component={Time}></Route>
             <Route exact path="/seat" component={Seat}></Route>
             <Route exact path="/student/info" component={studentInfo}></Route>
             <Route exact path="/teacher/info" component={teacherInfo}></Route>

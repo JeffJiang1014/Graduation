@@ -6,8 +6,6 @@ import Fab from '@material-ui/core/Fab';
 import Tooltip from '@material-ui/core/Tooltip';
 //import RefreshIcon from '@material-ui/icons/Refresh'
 import EditIcon from '@material-ui/icons/Edit'
-import 'bootstrap/dist/css/bootstrap.min.css';
-import 'bootstrap/dist/js/bootstrap';
 import $ from 'jquery'
 import { withStyles } from '@material-ui/styles';
 import Axios from 'axios'
@@ -18,9 +16,8 @@ const styles = {
     margin: '20px',
   },
   edit: {
-    position: 'absolute',
-    bottom: '90px',
-    right: '200px',
+    bottom: '-70px',
+    left: '900px',
   },
 }
 
@@ -89,7 +86,7 @@ class SimpleTooltips extends Component {
         <div>
         <Tooltip title="修改" aria-label="edit" arrow placement="top">
             <Fab color="secondary" className={classes.edit} data-toggle="modal" data-target="#editModal" style={{outline:'none'}}>
-              <EditIcon />
+              <EditIcon/>
             </Fab>
         </Tooltip>
         <div className="modal fade" id="editModal" role="dialog" aria-labelledby="editModalLabel" aria-hidden="true">

@@ -11,6 +11,7 @@ import DutyIcon from '@material-ui/icons/CalendarToday'
 import ReasearchIcon from '@material-ui/icons/MenuBook'
 import SeatIcon from '@material-ui/icons/EventSeat'
 import {Link} from 'react-router-dom'
+import PeopleIcon from '@material-ui/icons/People'
 
 class ItemList extends Component{
     constructor(props){
@@ -48,10 +49,6 @@ class ItemList extends Component{
                             <ListItemIcon><SeatIcon/></ListItemIcon>
                             <ListItemText primary="我的座位"/>
                         </ListItem>
-                        <ListItem button key="inform">
-                            <ListItemIcon><MailIcon/></ListItemIcon>
-                            <ListItemText primary="通知" />
-                        </ListItem>
                     </List>
                     <Divider />
                     <List>
@@ -63,7 +60,7 @@ class ItemList extends Component{
                             <ListItemIcon><ReasearchIcon/></ListItemIcon>
                             <ListItemText primary="我的科研" />
                         </ListItem>
-                        <ListItem button key="devMan" component={Link} to='/myDevice'>
+                        <ListItem button key="devMan" component={Link} to='/device'>
                             <ListItemIcon><DeviceIcon/></ListItemIcon>
                             <ListItemText primary="我的设备" />
                         </ListItem>
@@ -81,9 +78,9 @@ class ItemList extends Component{
                             <ListItemIcon><SeatIcon/></ListItemIcon>
                             <ListItemText primary="座位管理"/>
                         </ListItem>
-                        <ListItem button key="inform">
-                            <ListItemIcon><MailIcon/></ListItemIcon>
-                            <ListItemText primary="通知" />
+                        <ListItem button key="student"  component={Link} to='/mystudent'>
+                            <ListItemIcon><PeopleIcon/></ListItemIcon>
+                            <ListItemText primary="我的学生"/>
                         </ListItem>
                     </List>
                     <Divider />
@@ -96,7 +93,7 @@ class ItemList extends Component{
                             <ListItemIcon><ReasearchIcon/></ListItemIcon>
                             <ListItemText primary="我的科研" />
                         </ListItem>
-                        <ListItem button key="devMan" component={Link} to='/manageDevice'>
+                        <ListItem button key="devMan" component={Link} to='/device'>
                             <ListItemIcon><DeviceIcon/></ListItemIcon>
                             <ListItemText primary="设备管理" />
                         </ListItem>

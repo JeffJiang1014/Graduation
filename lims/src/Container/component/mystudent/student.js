@@ -6,11 +6,8 @@ import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
-import MyDevice from './myDevice'
-import Record from './record'
-import ManageDevice from './manageDevice'
-import AllDevices from './allDevices'
-import RequestDevice from './requestDevice'
+import Mystudent from './mystudent'
+import Application from './application'
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -64,25 +61,16 @@ export default function SimpleTabs() {
     <div className={classes.root}>
       <AppBar position="static" color="default">
         <Tabs value={value} onChange={handleChange} textColor="primary" indicatorColor="primary">
-          {(sessionStorage.getItem('permission') === '4' || sessionStorage.getItem('permission') === '5') &&<Tab label="我的设备" {...a11yProps(0)} />}
-          {(sessionStorage.getItem('permission') === '2' || sessionStorage.getItem('permission') === '3') && (<Tab label="申领请求" {...a11yProps(0)} />)}
-          <Tab label="领用记录" {...a11yProps(1)} />
-          {/* {console.log(sessionStorage.getItem('permission')==='4')} */}
-          {(sessionStorage.getItem('permission') === '4' || sessionStorage.getItem('permission') === '5') && (<Tab label="全部设备" {...a11yProps(2)} />)}
-          {(sessionStorage.getItem('permission') === '2' || sessionStorage.getItem('permission') === '3') && (<Tab label="管理设备" {...a11yProps(2)} />)}
-        </Tabs>
+          <Tab label="我的学生" {...a11yProps(0)} />
+          <Tab label="加入申请" {...a11yProps(1)} /></Tabs>
       </AppBar>
       <TabPanel value={value} index={0}>
-      {(sessionStorage.getItem('permission') === '4' || sessionStorage.getItem('permission') === '5') && (<MyDevice/>)}
-      {(sessionStorage.getItem('permission') === '2' || sessionStorage.getItem('permission') === '3') && (<RequestDevice/>)}
+        <Mystudent/>
       </TabPanel>
       <TabPanel value={value} index={1}>
-        <Record/>
+        <Application/>
       </TabPanel>
-      <TabPanel value={value} index={2}>
-      {(sessionStorage.getItem('permission') === '4' || sessionStorage.getItem('permission') === '5') && (<AllDevices/>)}
-      {(sessionStorage.getItem('permission') === '2' || sessionStorage.getItem('permission') === '3') && (<ManageDevice/>)}
-      </TabPanel>
+      
     </div>
   );
 }

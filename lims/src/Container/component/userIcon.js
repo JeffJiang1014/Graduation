@@ -68,7 +68,7 @@ export default function CustomizedMenus(props) {
         startIcon={<AccountCircle/>}
         onClick={handleClick}
       >
-        {window.sessionStorage.getItem('id')}
+        {sessionStorage.getItem('id')}
       </Button>
       <StyledMenu
         id="customized-menu"
